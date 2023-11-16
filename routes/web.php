@@ -29,6 +29,9 @@ Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToG
 // Laravel 8 & 9
 Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'handleGatewayCallback']);
 
+// communicating with the database routes
+Route::post('/pays', [App\Http\Controllers\PayController::class, 'redirectToGateway'])->name('pays');
+Route::get('/payments/callback', [App\Http\Controllers\PayController::class, 'handleGatewayCallback']);
 
 
 Route::get('/dashboard', function () {
