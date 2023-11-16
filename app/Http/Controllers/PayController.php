@@ -9,8 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
-// use Unicodeveloper\Paystack\Paystack;
-use Paystack;
+use Unicodeveloper\Paystack\Facades\Paystack;
 
 class PayController extends Controller
 {

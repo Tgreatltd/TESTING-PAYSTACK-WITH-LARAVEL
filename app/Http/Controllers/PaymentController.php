@@ -10,6 +10,7 @@ use Unicodeveloper\Paystack\Facades\Paystack;
 
 
 
+
 class PaymentController extends Controller
 {
     /**
@@ -32,7 +33,7 @@ class PaymentController extends Controller
     public function handleGatewayCallback()
     {
         $paymentDetails = Paystack::getPaymentData();
-
+    
         dd($paymentDetails);
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
