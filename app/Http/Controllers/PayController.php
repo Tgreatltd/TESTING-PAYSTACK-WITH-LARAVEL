@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use Illuminate\Support\Facades\Redirect;
 use Unicodeveloper\Paystack\Paystack;
 
@@ -37,6 +38,14 @@ class PayController extends Controller
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
         
-       ['amount','email','status','trans_id','ref_id'];
-    }
+    //    ['amount','email','status','trans_id','ref_id'];
+
+$payment= new Payment();
+$payment->email=$paymentDetails['data']['email'];
+$payment->status=$paymentDetails['data']['status'];
+$payment->amount=$paymentDetails['data']['amount'];
+$payment->trans_id=$paymentDetails['data']['Id'];
+$payment->ref_id=$paymentDetails['data']['reference'];
+$payment->save();
+}
 }
