@@ -21,6 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/index', [AuthController::class, 'welcome'])->name('index');
+Route::get('/getform', [AuthController::class, 'form'])->name('getform');
 
 
 // Laravel 8 & 9
