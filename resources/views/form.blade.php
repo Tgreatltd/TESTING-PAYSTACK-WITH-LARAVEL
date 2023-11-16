@@ -19,18 +19,18 @@
 
 <h1>PAYMENT PAGE</h1><br><br><br>
 
-    <form method="POST" action="{{ route('pays') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+    {{-- <form method="POST" action="{{ route('pays') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
         @csrf
         <div class="row" style="margin-bottom:40px;">
             <div class="col-md-8 col-md-offset-2">
               
-                <input type="hidden" name="email" value="olamoyegunoluwatobi@gmail.com"> {{-- required --}}
+                <input type="hidden" name="email" value="olamoyegunoluwatobi@gmail.com"> 
                 <input type="hidden" name="orderID" value="345">
-                <input type="hidden" name="amount" value="80000"> {{-- required in kobo --}}
+                <input type="hidden" name="amount" value="80000"> 
                 <input type="hidden" name="quantity" value="1">
                 <input type="hidden" name="currency" value="NGN">
-                <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
-                <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+                <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > 
+                <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> 
 
     
                 <p>
@@ -40,6 +40,17 @@
                 </p>
             </div>
         </div>
+    </form> --}}
+
+    <form action="{{ route('pays') }}" method="post">
+        @csrf
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" required>
+    
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+    
+        <button type="submit">Pay with Paystack</button>
     </form>
 </body>
 </html>
