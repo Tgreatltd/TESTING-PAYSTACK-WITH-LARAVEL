@@ -22,7 +22,6 @@ Route::get('/', function () {
 
 Route::get('/index', [AuthController::class, 'welcome'])->name('index');
 
-Route::get('/index', [PaymentController::class, 'welcome'])->name('index');
 
 // Laravel 8 & 9
 Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
