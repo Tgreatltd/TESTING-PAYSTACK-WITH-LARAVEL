@@ -36,5 +36,7 @@ class PayController extends Controller
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
+        
+       ['amount','email','status','trans_id','ref_id'];
     }
 }
