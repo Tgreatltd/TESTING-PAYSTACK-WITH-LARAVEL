@@ -17,6 +17,11 @@ class PaymentController extends Controller
      * Redirect the User to Paystack Payment Page
   
      */
+    public function welcome()
+    {
+       return view('index');
+    }
+
     public function redirectToGateway()
     {
         try{
@@ -30,9 +35,8 @@ class PaymentController extends Controller
      * Obtain Paystack payment information
    
      */
-    public function Callback()
+    public function callback()
     {
-      
         $paymentDetails = Paystack::getPaymentData();
     
         dd($paymentDetails);

@@ -28,7 +28,7 @@ Route::get('/getform', [AuthController::class, 'form'])->name('getform');
 Route::post('/pay', [App\Http\Controllers\PaymentController::class, 'redirectToGateway'])->name('pay');
 
 // Laravel 8 & 9
-Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'Callback'])->name('payment.callback');
+Route::get('/payment/callback', [App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');
 
 // communicating with the database routes
 Route::post('/pays', [App\Http\Controllers\PayController::class, 'redirectToGateway'])->name('pays');
