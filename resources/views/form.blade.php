@@ -45,10 +45,31 @@
     <form action="{{ route('pays') }}" method="post">
         @csrf
         <label for="amount">Amount:</label>
-        <input type="number" name="amount" required>
+        <input type="number" name="amount">
+        @error('amount')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
     
         <label for="email">Email:</label>
-        <input type="email" name="email" required>
+        <input type="email" name="email">
+        @error('email')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
+
+        <label for="">TransID:</label>
+        <input type="text" name="trans_id">
+        @error('trans_id')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
+                
+                <input type="hidden" name="ref_id" value="{{ Paystack::genTranxRef() }}"> 
+                <input type="hidden" name="currency" value="NGN">
+
+        <label for="">Status</label>
+        <input type="text" name="status">
+        @error('status')
+                    <small class="text-danger">{{$message}}</small>
+                @enderror
     
         <button type="submit">Pay with Paystack</button>
     </form>
