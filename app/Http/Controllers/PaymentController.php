@@ -13,15 +13,16 @@ use Unicodeveloper\Paystack\Facades\Paystack;
 
 class PaymentController extends Controller
 {
-    /**
-     * Redirect the User to Paystack Payment Page
-  
-     */
     public function welcome()
     {
        return view('index');
     }
 
+    
+    /**
+     * Redirect the User to Paystack Payment Page
+     * @return Url
+     */
     public function redirectToGateway()
     {
         try{
@@ -33,12 +34,12 @@ class PaymentController extends Controller
 
     /**
      * Obtain Paystack payment information
-   
+     * @return void
      */
-    public function callback()
+    public function handleGatewayCallback()
     {
-        $paymentDetails = Paystack::getPaymentData(); 
-    
+        $paymentDetails = Paystack::getPaymentData();
+
         dd($paymentDetails);
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
