@@ -15,7 +15,7 @@ class PaymentController extends Controller
 {
     /**
      * Redirect the User to Paystack Payment Page
-     * @return Url
+  
      */
     public function redirectToGateway()
     {
@@ -28,10 +28,11 @@ class PaymentController extends Controller
 
     /**
      * Obtain Paystack payment information
-     * @return void
+   
      */
-    public function handleGatewayCallback()
+    public function Callback()
     {
+      
         $paymentDetails = Paystack::getPaymentData();
     
         dd($paymentDetails);

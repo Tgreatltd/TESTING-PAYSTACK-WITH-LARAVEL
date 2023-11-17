@@ -15,44 +15,51 @@ class PayController extends Controller
 {
     /**
      * Redirect the User to Paystack Payment Page
-    //  * @return Url
+     * @return Url
      */
     public function redirectToGateway(Request $request)
     {
-        // try{
-        //     return Paystack::getAuthorizationUrl()->redirectNow();
-        // }catch(\Exception $e) {
-        //     return Redirect::back()->withMessage(['msg'=>'The paystack token has expired. Please refresh the page and try again.', 'type'=>'error']);
-        // }   
-        
-        $paymentDetails = [
-            'amount'       => $request->input('amount') * 100, // Paystack expects amount in kobo
-            'email'        => $request->input('email'),
-            'callback_url' => route('payments.callback'),
-        ];
+        try{
+            return Paystack::getAuthorizationUrl()->redirectNow();
+        }catch(\Exception $e) {
+            return Redirect::back()->withMessage(['msg'=>'The paystack token has expired. Please refresh the page and try again.', 'type'=>'error']);
+        }   
 
-        try {
-            $paymentResponse = Paystack::getAuthorizationUrl($paymentDetails);
+
+        
+        // $paymentDetails = [
+        //     'amount'       => $request->input('amount') * 100, // Paystack expects amount in kobo
+        //     'email'        => $request->input('email'),
+        // ];
+
+        // try {
+        //     $paymentResponse = Paystack::getAuthorizationUrl();
     
-            // Access the authorization URL from the response object
-            $authorizationUrl = $paymentResponse->data->authorization_url;
+        //     // Access the authorization URL from the response object
+        //     $authorizationUrl = $paymentResponse->data->authorization_url;
     
-            // Redirect to the authorization URL
-            return redirect()->to($authorizationUrl);
-        } catch (\Exception $e) {
-            // Handle exceptions, log the error, or show an error message
-            return back()->with('error', 'Failed to initiate payment: ' . $e->getMessage());
-        }
+        //     // Redirect to the authorization URL
+        //     return redirect()->to($authorizationUrl);
+        // } catch (\Exception $e) {
+        //     // Handle exceptions, log the error, or show an error message
+        //     return back()->with('error', 'Failed to initiate payment: ' . $e->getMessage());
+        // }
         
     }
 
     /**
      * Obtain Paystack payment information
-    //  * @return void
+     * @return void
      */
     public function handleGatewayCallback(Request $request)
     {
     
+        $paymentDetails = Paystack::getPaymentData();
+    
+        dd($paymentDetails);
+        // Now you have the payment details,
+        // you can store the authorization_code in your db to allow for recurrent subscriptions
+        // you can then redirect or do whatever you want
        
 
        
