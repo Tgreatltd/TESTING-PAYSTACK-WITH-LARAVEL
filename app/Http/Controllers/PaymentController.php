@@ -34,7 +34,7 @@ class PaymentController extends Controller
 
     /**
      * Obtain Paystack payment information
-     * @return void
+     
      */
     public function handleGatewayCallback()
     {
