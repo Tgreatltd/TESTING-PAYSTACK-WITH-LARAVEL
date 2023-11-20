@@ -68,7 +68,7 @@ class PayController extends Controller
             Log::error('Paystack Payment Verification Failed: ' . $e->getMessage());
             return redirect()->route('getform')->withMessage(['msg' => 'Payment verification failed. Please contact support.', 'type' => 'error']);
         } catch (\Exception $e) {
-            Log::error('Paystack Callback Error: ' . $e->getMessage());
+            Log::error('Paystack Callback Error: ' . $e->getMessage()); 
             return redirect()->route('index')->withMessage(['msg' => 'An unexpected error occurred. Please contact support.', 'type' => 'error']);
         }
     }
