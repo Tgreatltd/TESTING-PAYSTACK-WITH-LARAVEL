@@ -15,7 +15,7 @@ class PaymentController extends Controller
 {
     public function welcome()
     {
-       return view('index'); 
+       return view('index');
     }
 
     
