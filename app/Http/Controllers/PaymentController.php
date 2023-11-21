@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller; 
 use Illuminate\Support\Facades\Redirect; 
-use Unicodeveloper\Paystack\Facades\Paystack; 
+use Unicodeveloper\Paystack\Facades\Paystack;
 
 
 
